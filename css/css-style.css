@@ -367,7 +367,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: calc(100vh - 110px);
-  background: url("../images/mesjid-bg.jpg") top center;
+  background: url("https://res.cloudinary.com/basaaceh/image/upload/v1634411478/5415290_cll8pg.jpg") top center;
   background-size: cover;
   position: relative;
 }
