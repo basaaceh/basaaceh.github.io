@@ -200,7 +200,7 @@
     ----------------------*/
     NAY.mTypeIt = function() {
       if ($("#type-it").exists()){
-            loadScript(plugin_track + 'typeit.min.js', function() {
+            loadScript(plugin_track + 'type-it.js', function() {
                 new TypeIt('#type-it', {
                 speed: 200,
                 loop:true,
