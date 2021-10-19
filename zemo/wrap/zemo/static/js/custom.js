@@ -142,7 +142,7 @@
     NAY.masonry = function () {
       var portfolioWork = $('.portfolio-content');
       if ($(".portfolio-content").exists()){
-        loadScript(plugin_track + 'isotope.pkgd.min.js', function() {
+        loadScript(plugin_track + 'isotope/isotope.pkgd.min.js', function() {
           if ($(".portfolio-content").exists()){
               $(portfolioWork).isotope({
                 resizable: false,
@@ -187,9 +187,9 @@
     ----------------------*/
     NAY.particles = function() {
       if ($("#particles-box").exists()){
-        loadScript(plugin_track + 'particles.min.js', function() {
+        loadScript(plugin_track + 'particles/particles.min.js', function() {
         });
-        loadScript(plugin_track + 'particles-app.js', function() {
+        loadScript(plugin_track + 'particles/particles-app.js', function() {
         });
       }
     }
@@ -200,7 +200,7 @@
     ----------------------*/
     NAY.mTypeIt = function() {
       if ($("#type-it").exists()){
-            loadScript(plugin_track + 'type-it.js', function() {
+            loadScript(plugin_track + 'typeit-master/typeit.min.js', function() {
                 new TypeIt('#type-it', {
                 speed: 200,
                 loop:true,
