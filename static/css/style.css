@@ -1169,5 +1169,5 @@ body {
 /* Tamah peugadoh link mirah */
 .bekmirah a {
       color: #fff; }
-.bekmirah a:hover {
-      color: #fff; }
+a:hover {
+  color: blue;
