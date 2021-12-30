@@ -63,12 +63,12 @@ var bc = [
            termResp:"Whimmy Wham Wham Wozzel",
            helpResp:"The Original Party Worm!"
          },
-           //7
+           //8
 {title:"judul",
            termResp:"balah sa",
            helpResp:"balah dua"
          },
-//8
+//9
 {title:"clear",
            termResp:"N/a ",
            helpResp:"Clears the screen"
@@ -134,7 +134,7 @@ var cmd = (cncmd).toLowerCase();
 **************/
 
   if (cmd == bc[0].title) {
-    $("ol").append("<br>", helpTitle, bc[0].title, inBet, bc[0].helpResp,"<br>",bc[1].title, inBet, bc[1].helpResp,"<br>",bc[2].title, inBet, bc[2].helpResp,"<br>",bc[3].title, inBet, bc[3].helpResp,"<br>",bc[4].title, inBet, bc[4].helpResp,"<br>",bc[5].title, inBet, bc[5].helpResp,"<br>",bc[6].title, inBet, bc[6].helpResp,"<br>", bc[7].title, inBet, bc[7].helpResp, "<br>", bc[8].title, inBet, bc[8].helpResp, "<br>");
+    $("ol").append("<br><br>", helpTitle, bc[0].title, inBet, bc[0].helpResp,"<br><br>",bc[1].title, inBet, bc[1].helpResp,"<br><br>",bc[2].title, inBet, bc[2].helpResp,"<br><br>",bc[3].title, inBet, bc[3].helpResp,"<br><br>",bc[4].title, inBet, bc[4].helpResp,"<br><br>",bc[5].title, inBet, bc[5].helpResp,"<br><br>",bc[6].title, inBet, bc[6].helpResp,"<br><br>", bc[7].title, inBet, bc[7].helpResp, "<br><br>", bc[8].title, inBet, bc[8].helpResp, "<br><br>", bc[9].title, inBet, bc[8].helpResp, "<br><br>");
 } else if(cmd == bc[1].title){
     $("ol").append("<br>", bc[1].termResp, "<br>");
 } else if(cmd == bc[2].title){
