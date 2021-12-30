@@ -40,7 +40,7 @@ var bc = [
          },
 //3
 {title:"contact",
-           termResp:"Want to contact me for some reason? occultdigital@gmail.com ",
+           termResp:"Jeuet neuhubungi lon bak aliakbarbeda@gmail.com ",
            helpResp:"y contact info"
          },
 //4
