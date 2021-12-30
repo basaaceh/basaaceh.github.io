@@ -63,7 +63,7 @@ var bc = [
            termResp:"Whimmy Wham Wham Wozzel",
            helpResp:"The Original Party Worm!"
          },
-           //TAMAH
+           //7
 {title:"judul",
            termResp:"balah sa",
            helpResp:"balah dua"
