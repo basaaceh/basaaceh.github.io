@@ -63,6 +63,11 @@ var bc = [
            termResp:"Whimmy Wham Wham Wozzel",
            helpResp:"The Original Party Worm!"
          },
+           //TAMAH
+{title:"judul",
+           termResp:"balah sa",
+           helpResp:"balah dua"
+         },
 //8
 {title:"clear",
            termResp:"N/a ",
