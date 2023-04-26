@@ -6,8 +6,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<!-- Link font ala komputer zaman dulu -->
 	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
- 
-
     <style>
       body {
         background-color: #1c1c1c;
@@ -31,8 +29,8 @@
       #terminal-window {
     border: 2px solid #33ff00;
     border-radius: 5px;
-    max-height: 100%; /* ketinggian maksimum mengikuti ukuran teks */
-    overflow-y: auto; /* menampilkan scrollbar jika terlalu penuh */
+    max-height: 100%; /* manyang kotak maksimum seutot bak panyang teks */
+    overflow-y: auto; /* peudeuh scrollbar meunyo leupah penuh */
 }
 
 
@@ -102,7 +100,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<!-- Nama/Logo di sebelah kanan -->
+				 
 				<a class="navbar-brand pull-right" href="#">
 				<div style="font-size: 30px; line-height: 0.5; font-weight: bold; letter-spacing: 10px;">&#9679; &#9679;  &#9679;</div>
 				</a>
@@ -110,7 +108,7 @@
 			<!-- Menu navigasi -->
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Beranda</a></li>
+					<!--<li class="active"><a href="#">Beranda</a></li>-->
 					<li><a href="#" id="tentang">Tentang</a></li>
 					<li><a href="#" id="kontak">Kontak</a></li>
 				</ul>
@@ -142,9 +140,9 @@
         }
       });
 
+// <!-- Meunyo klik link kontak maka hôi fungsi -->
 document.getElementById("kontak").addEventListener("click", fungsikontak);
 document.getElementById("tentang").addEventListener("click", fungsitentang);
- 
 function fungsikontak() {
   executeCommand('kontak')
 }
@@ -158,8 +156,9 @@ function fungsitentang() {
          
             
             
+             case 'bantu':
              case 'help':
-           typeText('Available commands:<br>help: display this message<br>clear: clear the screen');
+           typeText('Perintah yang didukung:<br>help/bantuan: menampilkan pesan ini<br>clear/hapus: membersihkan teks pada layar');
             break;
             
             case 'kontak':
@@ -167,7 +166,7 @@ function fungsitentang() {
             break;
             
             case 'tentang':
-            typeText('Terminal Emulator v.0.1');
+            typeText('Terminal Emulator v.0.1<br>Oleh: Ali Akbar');
             break;
  
             
@@ -187,16 +186,26 @@ function fungsitentang() {
             
             
             
-            
+            // peugleh teks watee ketik "clear"
           case 'clear':
+          case 'bersihkan':
             output.innerHTML = '';
             break;
           default:
             //typeText(`Unknown command: ${command}`);
-            fetch(`https://basaaceh.org/test/kata.php?aaa=7ss75ss55&kata=${command}`)
+            fetch(`https://basaaceh.github.io/api-terminal/${command}.txt`)
     .then(response => response.text())
     .then(data => {
-      typeText(data);
+     
+     //Meunyo bak API Github 404 na "not found" output = "Tidak ditemukan"
+function bileueng(a,b,e){if(a+="",(b+="").length<=0)return a.length+1;for(var d=0,c=0,f=e?1:b.length;;)if((c=a.indexOf(b,c))>=0)++d,c+=f;else break;return d}
+if(bileueng(data,'not found')>0){
+    typeText(`Kata "${command}" tidak ada atau belum ada dalam database`)
+}
+else{
+    typeText(data);
+}
+    
     })
     .catch(error => console.error(error));
   break;
@@ -206,7 +215,8 @@ function fungsitentang() {
       
  
 
-
+//menutup form input beberapa saat ketika output sedang tampil mengetik
+//waktu lamanya diatur pada setTimeout
 // Mengambil elemen dengan id "editable"
 var editable = document.getElementById("terminal-input");
 
@@ -269,9 +279,7 @@ editable.addEventListener("keydown", function(event) {
 }
 
     </script>
-    	<!-- Kode HTML lainnya -->
-
-	<!-- Link JS Bootstrap -->
+  <!-- Link JS Bootstrap -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  
