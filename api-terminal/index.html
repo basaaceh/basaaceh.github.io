@@ -13,13 +13,7 @@
         font-family: 'VT323', monospace;
         font-size: 30px;
       }
-      
-       #navbar navbar-default {
-        background-color: #1c1c1c;
-        color: #33ff00;
-        font-family: 'VT323', monospace;
-        font-size: 30px;
-      }
+ 
 
       #terminal-container {
         width: 80%;
@@ -87,9 +81,15 @@
         }
       }
     </style>
-    <audio id="type-sound"><source src="typing.mp3" type="audio/mpeg"></audio></head>
+     
     </head>
 <body>
+
+
+<!--<input type="text" id="terminal-input">-->
+<audio id="keySound" src="https://basaaceh.github.io/api-terminal/click.wav"></audio>
+
+
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -102,15 +102,15 @@
 				</button>
 				 
 				<a class="navbar-brand pull-right" href="#">
-				<div style="font-size: 30px; line-height: 0.5; font-weight: bold; letter-spacing: 10px;">&#9679; &#9679;  &#9679;</div>
+				<div style="font-size: 30px; line-height: 0.5; font-weight: bold; letter-spacing: 10px; color: #33ff00;">&#9679; &#9679;  &#9679;</div>
 				</a>
 			</div>
 			<!-- Menu navigasi -->
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<!--<li class="active"><a href="#">Beranda</a></li>-->
-					<li><a href="#" id="tentang">Tentang</a></li>
-					<li><a href="#" id="kontak">Kontak</a></li>
+					<li><a href="#" id="tentang" style="color:#33ff00">Tentang</a></li>
+					<li><a href="#" id="kontak" style="color:#33ff00">Kontak</a></li>
 				</ul>
 			</div>
 		</div>
@@ -122,11 +122,22 @@
         <div id="terminal-header">TERMINAL EMULATOR KAMUS BASA ACEH</div>
         <div id="terminal-body">
           <div id="terminal-prompt">></div>
-          <div id="terminal-input" contenteditable="true"></div>
+          <div id="terminal-input" contenteditable="true" autofocus></div>
           <div id="terminal-output"></div>
         </div>
       </div>
     </div>
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
+    
     <script>
       const input = document.getElementById('terminal-input');
       const output = document.getElementById('terminal-output');
@@ -237,21 +248,20 @@ function enableEditing() {
 editable.addEventListener("keydown", function(event) {
   if (event.keyCode === 13) { // Jika tombol yang ditekan adalah Enter
     disableEditing(); // Mengubah contenteditable menjadi false
-    setTimeout(enableEditing, 3000); 
+    setTimeout(enableEditing, 5000); 
   }
 });
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
-
-
-
-
-
-
-
-
-
-      function typeText(text) {
+  function typeText(text) {
   let index = 0;
   const intervalId = setInterval(() => {
     if (text[index] === '<') {
@@ -272,10 +282,7 @@ editable.addEventListener("keydown", function(event) {
         
     
       if (output.innerHTML.slice(-4) !== '<br>') {
-           
-         
-        output.innerHTML += '<br>';
-       
+       output.innerHTML += '<br>';
       }
     }
   }, 50);
