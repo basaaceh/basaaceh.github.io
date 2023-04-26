@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TERMINAL EMULATOR KAMUS BAHASA ACEH</title>
+	<!-- Link CSS Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- Link font ala komputer zaman dulu -->
+	<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+ 
+
+    <style>
+      body {
+        background-color: #1c1c1c;
+        color: #33ff00;
+        font-family: 'VT323', monospace;
+        font-size: 30px;
+      }
+      
+       #navbar navbar-default {
+        background-color: #1c1c1c;
+        color: #33ff00;
+        font-family: 'VT323', monospace;
+        font-size: 30px;
+      }
+
+      #terminal-container {
+        width: 80%;
+        margin: 50px auto;
+      }
+
+      #terminal-window {
+    border: 2px solid #33ff00;
+    border-radius: 5px;
+    max-height: 100%; /* ketinggian maksimum mengikuti ukuran teks */
+    overflow-y: auto; /* menampilkan scrollbar jika terlalu penuh */
+}
+
+
+      #terminal-header {
+        background-color: #1c1c1c;
+        color: #33ff00;
+        font-size: 16px;
+        padding: 5px;
+        text-align: center;
+      }
+
+      #terminal-body {
+        padding: 10px;
+      }
+
+      #terminal-prompt {
+        display: inline-block;
+        margin-right: 5px;
+      }
+
+      #terminal-input {
+        display: inline-block;
+        min-width: 50px;
+        outline: none;
+      }
+
+      #terminal-output {
+        margin-top: 10px;
+      }
+
+      .terminal-typing {
+        animation: terminal-typing 0.5s infinite;
+      }
+
+      @keyframes terminal-typing {
+        from {
+          opacity: 0.5;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .terminal-blink {
+        animation: terminal-blink 0.5s infinite;
+      }
+
+      @keyframes terminal-blink {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+    <audio id="type-sound"><source src="typing.mp3" type="audio/mpeg"></audio></head>
+    </head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!-- Toggle Nav -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- Nama/Logo di sebelah kanan -->
+				<a class="navbar-brand pull-right" href="#">
+				<div style="font-size: 30px; line-height: 0.5; font-weight: bold; letter-spacing: 10px;">&#9679; &#9679;  &#9679;</div>
+				</a>
+			</div>
+			<!-- Menu navigasi -->
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Beranda</a></li>
+					<li><a href="#" id="tentang">Tentang</a></li>
+					<li><a href="#" id="kontak">Kontak</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+ 
+ 
+    <div id="terminal-container">
+      <div id="terminal-window">
+        <div id="terminal-header">TERMINAL EMULATOR KAMUS BASA ACEH</div>
+        <div id="terminal-body">
+          <div id="terminal-prompt">></div>
+          <div id="terminal-input" contenteditable="true"></div>
+          <div id="terminal-output"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const input = document.getElementById('terminal-input');
+      const output = document.getElementById('terminal-output');
+
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          const command = input.innerText.trim();
+          input.innerText = '';
+          output.innerHTML = `<div><span class="terminal-prompt">&gt;</span> ${command}</div>`;
+          executeCommand(command);
+        }
+      });
+
+document.getElementById("kontak").addEventListener("click", fungsikontak);
+document.getElementById("tentang").addEventListener("click", fungsitentang);
+ 
+function fungsikontak() {
+  executeCommand('kontak')
+}
+function fungsitentang() {
+  executeCommand('tentang')
+}
+
+
+      function executeCommand(command) {
+        switch (command) {
+         
+            
+            
+             case 'help':
+           typeText('Available commands:<br>help: display this message<br>clear: clear the screen');
+            break;
+            
+            case 'kontak':
+           typeText('Kontak:<br>Email: aliakbar@basaaceh.org');
+            break;
+            
+            case 'tentang':
+            typeText('Terminal Emulator v.0.1');
+            break;
+ 
+            
+            
+    case "copy":
+   // salin key keyboard ke clipboard
+    const key = response;
+    navigator.clipboard.writeText(key)
+      .then(() => {
+        console.log(`Key ${key} berhasil disalin!`);
+      })
+      .catch(err => {
+        console.error(`Gagal menyalin key: ${err}`);
+      });
+    break;
+            
+            
+            
+            
+            
+          case 'clear':
+            output.innerHTML = '';
+            break;
+          default:
+            //typeText(`Unknown command: ${command}`);
+            fetch(`https://basaaceh.org/test/kata.php?aaa=7ss75ss55&kata=${command}`)
+    .then(response => response.text())
+    .then(data => {
+      typeText(data);
+    })
+    .catch(error => console.error(error));
+  break;
+
+        }
+      }
+      
+ 
+
+
+// Mengambil elemen dengan id "editable"
+var editable = document.getElementById("terminal-input");
+
+// Mendefinisikan fungsi untuk mengubah contenteditable menjadi false
+function disableEditing() {
+  editable.setAttribute("contenteditable", "false");
+}
+
+// Mendefinisikan fungsi untuk mengubah contenteditable menjadi true
+function enableEditing() {
+  editable.setAttribute("contenteditable", "true");
+}
+
+// Menambahkan event listener untuk menangani ketika pengguna menekan tombol "Enter"
+editable.addEventListener("keydown", function(event) {
+  if (event.keyCode === 13) { // Jika tombol yang ditekan adalah Enter
+    disableEditing(); // Mengubah contenteditable menjadi false
+    setTimeout(enableEditing, 3000); 
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+      function typeText(text) {
+  let index = 0;
+  const intervalId = setInterval(() => {
+    if (text[index] === '<') {
+      const closingBracketIndex = text.indexOf('>', index);
+      if (closingBracketIndex !== -1) {
+        output.innerHTML += text.slice(index, closingBracketIndex + 1);
+        index = closingBracketIndex + 1;
+        output.innerHTML += '<br>';
+        return;
+      }
+    }
+    output.innerHTML += text[index];
+   
+    index++;
+     
+    if (index === text.length) {
+      clearInterval(intervalId);
+        
+    
+      if (output.innerHTML.slice(-4) !== '<br>') {
+           
+         
+        output.innerHTML += '<br>';
+       
+      }
+    }
+  }, 50);
+}
+
+    </script>
+    	<!-- Kode HTML lainnya -->
+
+	<!-- Link JS Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+  </body>
+</html>
