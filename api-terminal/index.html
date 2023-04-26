@@ -133,14 +133,14 @@
 
       input.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
-          const command = input.innerText.trim();
+          const command = input.innerText.trim().toLowerCase();
           input.innerText = '';
           output.innerHTML = `<div><span class="terminal-prompt">&gt;</span> ${command}</div>`;
           executeCommand(command);
         }
       });
 
-// <!-- Meunyo klik link kontak maka hôi fungsi -->
+// <!-- Meunyo klik link kontak maka h么i fungsi -->
 document.getElementById("kontak").addEventListener("click", fungsikontak);
 document.getElementById("tentang").addEventListener("click", fungsitentang);
 function fungsikontak() {
@@ -158,14 +158,17 @@ function fungsitentang() {
             
              case 'bantu':
              case 'help':
+                 output.innerHTML = ''; //Peugleh ata awai meunyo na input bantu/case
            typeText('Perintah yang didukung:<br>help/bantuan: menampilkan pesan ini<br>clear/hapus: membersihkan teks pada layar');
             break;
             
             case 'kontak':
+                output.innerHTML = ''; //Peugleh ata awai meunyo na input kontak
            typeText('Kontak:<br>Email: aliakbar@basaaceh.org');
             break;
             
-            case 'tentang':
+            case 'tentang': 
+                output.innerHTML = ''; //Peugleh ata awai meunyo na input kontak
             typeText('Terminal Emulator v.0.1<br>Oleh: Ali Akbar');
             break;
  
