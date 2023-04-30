@@ -199,20 +199,48 @@ function fungsitentang() {
             
             
 			
-		case "progress":
-  const progressBar = "####################";
-  let progress = 0;
-  const interval = setInterval(() => {
-    if (progress === 100) {
-      clearInterval(interval);
-      console.log(`Progress: [${progressBar}] ${progress}%`);
-      console.log("Installation Complete!");
-    } else {
-      progress += 10;
-      console.log(`Progress: [${progressBar.slice(0, progress / 5)}] ${progress}%`);
-    }
-  }, 1000);
-  break;
+		case 'progress':
+      output.innerHTML = 'Progress:';
+      let progressBars = document.createElement('div');
+      progressBars.classList.add('progress-bars');
+      output.appendChild(progressBars);
+      let progressBar1 = document.createElement('div');
+      progressBar1.classList.add('progress-bar');
+      progressBars.appendChild(progressBar1);
+      let progressBar2 = document.createElement('div');
+      progressBar2.classList.add('progress-bar');
+      progressBars.appendChild(progressBar2);
+      let progressBar3 = document.createElement('div');
+      progressBar3.classList.add('progress-bar');
+      progressBars.appendChild(progressBar3);
+      let progress1 = 0;
+      let progress2 = 0;
+      let progress3 = 0;
+      let interval1 = setInterval(function() {
+        progress1 += 5;
+        if(progress1 > 100) {
+          clearInterval(interval1);
+        } else {
+          progressBar1.innerHTML = '#' + ' '.repeat((100-progress1)/5);
+        }
+      }, 100);
+      let interval2 = setInterval(function() {
+        progress2 += 2;
+        if(progress2 > 100) {
+          clearInterval(interval2);
+        } else {
+          progressBar2.innerHTML = '#' + ' '.repeat((100-progress2)/2);
+        }
+      }, 100);
+      let interval3 = setInterval(function() {
+        progress3 += 1;
+        if(progress3 > 100) {
+          clearInterval(interval3);
+        } else {
+          progressBar3.innerHTML = '#' + ' '.repeat(100-progress3);
+        }
+      }, 100);
+      break;
 
 	
 			
