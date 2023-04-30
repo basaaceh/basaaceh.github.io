@@ -198,6 +198,29 @@ function fungsitentang() {
     break;
             
             
+			
+		case 'install':
+  const progressBar = document.createElement('div');
+  progressBar.classList.add('progress-bar');
+  output.appendChild(progressBar);
+
+  let progress = 0;
+  const interval = setInterval(() => {
+    progressBar.style.width = `${progress}%`;
+    output.scrollTop = output.scrollHeight;
+    progress += 10;
+    if (progress > 100) {
+      clearInterval(interval);
+      output.removeChild(progressBar);
+      printOutput('Installation complete!');
+    }
+  }, 1000);
+  break;
+	
+			
+			
+			
+			
             
             
             // peugleh teks watee ketik "clear"
