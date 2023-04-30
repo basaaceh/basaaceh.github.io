@@ -199,23 +199,21 @@ function fungsitentang() {
             
             
 			
-		case 'install':
-  const progressBar = document.createElement('div');
-  progressBar.classList.add('progress-bar');
-  output.appendChild(progressBar);
-
+		case "progress":
+  const progressBar = "####################";
   let progress = 0;
   const interval = setInterval(() => {
-    progressBar.style.width = `${progress}%`;
-    output.scrollTop = output.scrollHeight;
-    progress += 10;
-    if (progress > 100) {
+    if (progress === 100) {
       clearInterval(interval);
-      output.removeChild(progressBar);
-      printOutput('Installation complete!');
+      console.log(`Progress: [${progressBar}] ${progress}%`);
+      console.log("Installation Complete!");
+    } else {
+      progress += 10;
+      console.log(`Progress: [${progressBar.slice(0, progress / 5)}] ${progress}%`);
     }
   }, 1000);
   break;
+
 	
 			
 			
