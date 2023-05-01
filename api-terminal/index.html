@@ -262,7 +262,8 @@ editable.addEventListener("keydown", function(event) {
  
  
  
- 
+output.innerHTML = output.innerHTML.replaceAll('\n', '<br>');
+
  
  
 
@@ -288,6 +289,7 @@ editable.addEventListener("keydown", function(event) {
     
       if (output.innerHTML.slice(-4) !== '<br>') {
        output.innerHTML += '<br>';
+	      
       }
     }
   }, 50);
