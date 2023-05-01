@@ -212,7 +212,7 @@ function fungsitentang() {
             break;
           default:
             //typeText(`Unknown command: ${command}`);
-            fetch(`https://basaaceh.github.io/api-terminal/${command}.txt`)
+            fetch(`https://basaaceh.github.io/api-terminal/${command}`)
     .then(response => response.text())
     .then(data => {
      
