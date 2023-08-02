@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformator Calculator</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<style>
+    body {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Philips_N4422_-_power_supply_transformer-2098.jpg/480px-Philips_N4422_-_power_supply_transformer-2098.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 100px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mb-4">Transformator Calculator<br/>By Ali Akbar</h1>
+    <div class="mb-3">
+        <label for="vp" class="form-label">Tegangan Primer (Vp) <small>(volt)</small>:</label>
+        <input type="number" class="form-control" id="vp" step="any" value="">
+    </div>
+    <div class="mb-3">
+        <label for="vs" class="form-label">Tegangan Sekunder (Vs) <small>(volt)</small>:</label>
+        <input type="number" class="form-control" id="vs" step="any" value="">
+    </div>
+    <div class="mb-3">
+        <label for="np" class="form-label">Jumlah Lilitan Primer (Np):</label>
+        <input type="number" class="form-control" id="np" value="">
+    </div>
+    <div class="mb-3">
+        <label for="ns" class="form-label">Jumlah Lilitan Sekunder (Ns):</label>
+        <input type="number" class="form-control" id="ns" value="">
+    </div>
+    <p class="mb-3">Efisiensi = <span id="efficiency-result"></span>%</p>
+    <div id="explanation" class="mb-3"></div>
+</div>
+
+<script>
+const vpInput = document.getElementById("vp");
+const vsInput = document.getElementById("vs");
+const npInput = document.getElementById("np");
+const nsInput = document.getElementById("ns");
+const efficiencyResult = document.getElementById("efficiency-result");
+const explanation = document.getElementById("explanation");
+
+function calculateResults() {
+    const vp = parseFloat(vpInput.value);
+    const vs = parseFloat(vsInput.value);
+    const np = parseFloat(npInput.value);
+    const ns = parseFloat(nsInput.value);
+
+    if (vp && np && ns) {
+        const calculatedVs = (vp * ns / np).toFixed(2);
+        const efficiency = ((calculatedVs / vp) * 100).toFixed(2);
+
+        vsInput.value = calculatedVs;
+        efficiencyResult.textContent = efficiency;
+
+        explanation.innerHTML = `
+            <p><strong>Rumus:</strong> Efisiensi = (Tegangan Sekunder / Tegangan Primer) × 100%</p>
+            <p><strong>Proses Perhitungan:</strong></p>
+            <p>1. Hitung Tegangan Sekunder (Vs) menggunakan rumus: Vs = (Vp × Ns) / Np</p>
+            <p>2. Hitung Efisiensi menggunakan rumus: Efisiensi = (Vs / Vp) × 100%</p>
+        `;
+    } else {
+        vsInput.value = "";
+        efficiencyResult.textContent = "";
+        explanation.innerHTML = "";
+    }
+}
+
+vpInput.addEventListener("input", calculateResults);
+npInput.addEventListener("input", calculateResults);
+nsInput.addEventListener("input", calculateResults);
+
+// Calculate initial values
+calculateResults();
+</script>
+</body>
+</html>
