@@ -1,718 +1,383 @@
-MATE BASA GADOH BANGSA
-<!-- ﻿<!DOCTYPE html>
-<html lang="zxx">
-
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <!-- metas -->
-    <meta charset="utf-8">
-    <meta name="author" content="themepaa">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Zemo - Portfolio Template">
-    <meta name="description" content="Zemo - Portfolio Template">
-    <!-- title -->
-    <title>BasaAceh.Org</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <!-- theme css -->
-    <link href="static\css\style.css" rel="stylesheet">
-</head>
-<!-- Body Start -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yayasan Basa Aceh - Merawat Basa, Menyemai Budaya</title>
+    <style>
+        /* --- Import Fonts (Serif for Headlines, Sans-serif for Body) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
 
-<body data-bs-spy="scroll" data-bs-target="#navbar-collapse-toggle" data-bs-offset="90" class="dark-bg">
-    <!-- page loading -->
-    <div id="loading">
-        <div class="load-circle"><span class="one"></span></div>
-    </div>
-    <!-- End -->
-    <!-- Header -->
-    <header class="main-header">
-        <nav class="navbar header-nav header-white header-transparent navbar-expand-lg">
+        :root {
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            
+            --primary-color: #0a2e1d; /* Deeper, darker green */
+            --secondary-color: #c5a572; /* Muted, elegant gold */
+            --text-color: #222222; /* Near-black for softer contrast */
+            --light-text-color: #6d6d6d;
+            --bg-color: #f7f5f2; /* Warm off-white background */
+            --white: #ffffff;
+            --border-color: #e5e0d8;
+        }
+
+        /* --- General Styling & Custom Cursor --- */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            margin: 0;
+            background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 9999;
+            opacity: 0;
+        }
+
+        body:hover .custom-cursor { opacity: 1; }
+        a:hover ~ .custom-cursor, .btn:hover ~ .custom-cursor {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(197, 165, 114, 0.2);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: 700; color: var(--primary-color); }
+        
+        /* --- Animation on Scroll --- */
+        .reveal { opacity: 0; transform: translateY(60px); transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Header with Glassmorphism Effect --- */
+        .header { position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; padding: 20px 0; transition: all 0.4s ease; }
+        .header.scrolled { background-color: rgba(247, 245, 242, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 5px 15px rgba(0,0,0,0.03); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--white); text-decoration: none; transition: color 0.4s ease; }
+        .header.scrolled .logo { color: var(--primary-color); }
+        .main-nav ul { margin: 0; padding: 0; list-style: none; display: flex; gap: 35px; }
+        .main-nav a { font-family: var(--font-sans); font-weight: 500; font-size: 1rem; text-decoration: none; color: var(--white); position: relative; padding-bottom: 8px; transition: color 0.4s ease; }
+        .header.scrolled .main-nav a { color: var(--primary-color); }
+        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--secondary-color); transition: width 0.4s ease; }
+        .main-nav a:hover::after { width: 100%; }
+
+        /* --- Premium Button Style --- */
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 500; font-family: var(--font-sans); transition: all 0.4s ease; border: 1px solid var(--secondary-color); }
+        .btn-primary { background-color: var(--secondary-color); color: var(--primary-color); }
+        .btn-primary:hover { background-color: transparent; color: var(--secondary-color); }
+        
+        /* --- Hero Section with Refined Typography --- */
+        #hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; color: var(--white); text-align: center; overflow: hidden; }
+        #hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: -2; transform: translate(-50%, -50%); }
+        #hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(10, 46, 29, 0.9), rgba(10, 46, 29, 0.6)); z-index: -1; }
+        #hero h1 { font-size: calc(2.8rem + 2.5vw); font-weight: 700; line-height: 1.1; margin-bottom: 25px; color: var(--white); text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        #hero h1 span { display: inline-block; opacity: 0; transform: translateY(30px); animation: word-reveal 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
+        #hero h3 { font-family: var(--font-sans); font-size: 1.15rem; font-weight: 400; margin-bottom: 40px; color: rgba(255,255,255,0.8); max-width: 700px; margin-left: auto; margin-right: auto; opacity: 0; animation: fade-in-up 1s 1s ease forwards; }
+
+        /* --- Section Styling (Spacing Between Cards) --- */
+        section { padding: 50px 0; }
+        .section-title { text-align: center; margin-bottom: 70px; font-size: 3.4rem; font-weight: 600; line-height: 1.2; }
+        .section-title span { color: var(--secondary-color); }
+
+        /* --- Section Card Wrapper --- */
+        .section-card {
+            background-color: var(--white);
+            padding: 70px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.07);
+        }
+
+        /* --- Premium Card Style (Cards within Section Card) --- */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .card { 
+            position: relative; 
+            background-color: var(--bg-color);
+            border-radius: 12px; 
+            border: 1px solid var(--border-color); 
+            text-align: left; 
+            padding: 35px; 
+            overflow: hidden; 
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.04);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: floatAnimation 6s ease-in-out infinite;
+        }
+        .card:nth-child(even) { animation-delay: -3s; }
+
+        .card:hover {
+            transform: translateY(-10px);
+            animation-play-state: paused;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .card::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(197, 165, 114, 0.1), transparent 40%); z-index: 0; opacity: 0; transition: opacity 0.5s; }
+        .card:hover::before { opacity: 1; }
+        .card-content { position: relative; z-index: 1; }
+        .card-icon { color: var(--secondary-color); margin-bottom: 20px; }
+        .card-icon svg { width: 44px; height: 44px; }
+        .card h4 { font-size: 1.8rem; margin-bottom: 15px; }
+        .card p { color: var(--light-text-color); margin-bottom: 25px; line-height: 1.7; font-size: 0.95rem; }
+        .card a.read-more { font-family: var(--font-sans); color: var(--primary-color); font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+        
+        /* --- News List Refined --- */
+        .news-list { max-width: 900px; margin: 0 auto; }
+        .news-item { display: flex; gap: 30px; align-items: center; padding: 25px; border-bottom: 1px solid var(--border-color); border-radius: 12px; transition: background-color 0.3s; }
+        .news-item:last-child { border-bottom: none; }
+        .news-item:hover { background-color: var(--bg-color); }
+        .news-item .news-meta { font-family: var(--font-sans); color: var(--light-text-color); font-weight: 500; flex-shrink: 0; width: 140px; font-size: 0.9rem; }
+        .news-item .news-title { font-size: 1.6rem; margin: 0; line-height: 1.3; }
+        .news-item .news-title a { text-decoration: none; color: var(--primary-color); background-image: linear-gradient(var(--secondary-color), var(--secondary-color)); background-position: 0% 100%; background-repeat: no-repeat; background-size: 0% 2px; transition: background-size .3s; }
+        .news-item .news-title a:hover { background-size: 100% 2px; }
+
+        /* --- Testimonials with Parallax Background --- */
+        #testimonials { position: relative; z-index: 1; background-color: transparent; padding: 0; }
+        #testimonials::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1618247471395-3b11c0f41940?q=80&w=1964&auto-format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed; opacity: 0.1;
+        }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .testimonial-card { text-align: center; }
+        .testimonial-photo img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--white), 0 0 0 6px var(--border-color); margin-bottom: 25px; }
+        .testimonial-text p { font-family: var(--font-serif); font-size: 1.4rem; line-height: 1.5; color: var(--primary-color); margin: 0 0 20px 0; }
+        .testimonial-text cite { font-family: var(--font-sans); font-weight: 500; color: var(--light-text-color); font-style: normal; }
+        
+        /* --- Other sections styling (CTA, Footer) --- */
+        #cta-section { padding: 50px 20px; }
+        #cta { background: linear-gradient(45deg, var(--primary-color), #144e32); color: var(--white); text-align: center; border-radius: 24px; padding: 90px 40px; box-shadow: 0px 20px 60px rgba(10, 46, 29, 0.2); }
+        #cta h2 { color: var(--white); font-size: 3.2rem; }
+        .footer { background-color: #121212; color: #a0a0a0; padding: 90px 0 40px 0; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        .footer-col h4 { font-family: var(--font-sans); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--secondary-color); margin-bottom: 25px; font-weight: 700; }
+        .footer-col ul { list-style: none; padding: 0; } .footer-col li { margin-bottom: 15px; }
+        
+        /* --- MODIFIED: Social Media Icon + Text Styling --- */
+        .footer-col a {
+            font-family: var(--font-sans);
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            display: flex; /* Membuat ikon dan teks sejajar */
+            align-items: center;
+            gap: 12px; /* Jarak antara ikon dan teks */
+        }
+        .footer-col a svg {
+            stroke: #a0a0a0;
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0; /* Mencegah ikon mengecil */
+            transition: stroke 0.3s;
+        }
+        .footer-col a:hover, .footer-col a:hover svg {
+            color: var(--secondary-color);
+            stroke: var(--secondary-color);
+        }
+
+        .footer-bottom { text-align: center; border-top: 1px solid #333; padding-top: 40px; font-size: 0.9em; }
+
+        @keyframes floatAnimation { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
+        @keyframes fade-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes word-reveal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">YBA</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#products">Platform</a></li>
+                    <li><a href="#news">Berita</a></li>
+                </ul>
+            </nav>
+            <a href="#cta" class="btn btn-primary">Donasi</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+             <video autoplay muted loop playsinline id="hero-video">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-top-aerial-shot-of-a-beach-with-bathers-and-and-129-large.mp4" type="video/mp4">
+            </video>
             <div class="container">
-                <!-- Brand -->
-                <a class="navbar-brand" href="#">BASA ACEH<span></span></a>
-                <!-- / -->
-                <!-- Mobile Toggle -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-toggle" aria-controls="navbar-collapse-toggle" aria-expanded="false" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <!-- / -->
-                <!-- Top Menu -->
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse-toggle">
-                    <ul class="navbar-nav ml-auto">
-                        <li><a class="nav-link active" href="#home"><span>ON KEUE</span></a></li>
-                        <li><a class="nav-link" href="#about"><span>BHAH KAMOE</span></a></li>
-                        <li><a class="nav-link" href="#services"><span>Services</span></a></li>
-                        <li><a class="nav-link" href="#work"><span>PORTFOLIO</span></a></li>
-                        <li><a class="nav-link" href="#blog"><span>BLOG</span></a></li>
-                        <li><a class="nav-link" href="#contactus"><span>KONTAK</span></a></li>
+                <h3 class="animated-text">Yayasan Basa Aceh</h3>
+                <h1 class="animated-text">Merawat Basa,<br>Menyemai Budaya.</h1>
+                <a href="#products" class="btn btn-primary animated-text" style="padding: 16px 35px; font-size: 1rem;">Jelajahi Platform Kami</a>
+            </div>
+        </section>
+
+        <section id="products" class="reveal">
+            <div class="container">
+                <div class="section-card">
+                    <h2 class="section-title">Platform Digital <span>Inovatif</span></h2>
+                    <div class="card-grid">
+                        <div class="card"><div class="card-content"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></div><h4>Kamus Digital</h4><p>Kamus hidup dengan audio, contoh kalimat, dan kontribusi komunitas untuk menangkap setiap nuansa bahasa Aceh.</p><a href="#" class="read-more">Pelajari Lebih Lanjut →</a></div></div>
+                        <div class="card"><div class="card-content"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div><h4>Aplikasi "Meurunoe"</h4><p>Platform gamifikasi yang membuat belajar bahasa Aceh menjadi adiktif, menyenangkan, dan efektif bagi semua usia.</p><a href="#" class="read-more">Unduh Gratis →</a></div></div>
+                        <div class="card"><div class="card-content"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div><h4>Pustaka Sastra</h4><p>Akses tak terbatas ke dunia hikayat, puisi, dan karya sastra Aceh modern yang telah didigitalkan untuk masa depan.</p><a href="#" class="read-more">Mulai Membaca →</a></div></div>
+                        <div class="card"><div class="card-content"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></div><h4>Alat Tulis Jawoë</h4><p>Konversi teks Latin ke aksara Jawoë secara instan. Alat penting untuk akademisi, pelajar, dan penulis konten budaya.</p><a href="#" class="read-more">Coba Sekarang →</a></div></div>
+                        <div class="card"><div class="card-content"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div><h4>Kelas & Webinar</h4><p>Ikuti kelas terstruktur bersama tutor ahli atau bergabung dalam webinar budaya bulanan dengan para pakar.</p><a href="#" class="read-more">Lihat Jadwal →</a></div></div>
+                        <div class="card"><div class="card-content"><div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8a13 13 0 0 1 13 13M8 20l4-4 .5-1-1-.5-4 4Z"></path><path d="M5 17a3 3 0 0 1-3-3"></path></svg></div><h4>Arsip Sejarah Lisan</h4><p>Dengarkan langsung rekaman suara para tetua adat yang berbagi cerita, hikayat, dan kearifan lokal.</p><a href="#" class="read-more">Mulai Mendengar →</a></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="reveal">
+            <div class="container">
+                <div class="section-card">
+                    <h2 class="section-title">Kabar & <span>Kegiatan</span></h2>
+                    <div class="news-list">
+                        <div class="news-item"><div class="news-meta">27 SEP 2025</div><h4 class="news-title"><a href="#">YBA Sukses Gelar Webinar Internasional 'Hikayat Aceh di Era Digital'</a></h4></div>
+                        <div class="news-item"><div class="news-meta">20 SEP 2025</div><h4 class="news-title"><a href="#">Pembaruan Aplikasi Meurunoe: Teknologi AI Kini Bantu Latih Akurasi Pelafalan</a></h4></div>
+                        <div class="news-item"><div class="news-meta">15 SEP 2025</div><h4 class="news-title"><a href="#">Kolaborasi YBA dan Diaspora di Malaysia Hadirkan Materi Ajar Digital</a></h4></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="reveal">
+            <div class="container">
+                 <div class="section-card">
+                    <h2 class="section-title">Suara <span>Komunitas</span></h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card"><div class="testimonial-photo"><img src="https://i.pravatar.cc/150?img=1" alt="Foto Cut Aisyah"></div><div class="testimonial-text"><p>"Aplikasi Meurunoe membuat saya jatuh cinta kembali pada bahasa ibu. Benar-benar seperti bermain!"</p><cite>— Cut Aisyah, Mahasiswi Sastra Daerah</cite></div></div>
+                        <div class="testimonial-card"><div class="testimonial-photo"><img src="https://i.pravatar.cc/150?img=32" alt="Foto Teuku Ridwan"></div><div class="testimonial-text"><p>"Sebagai perantau, kamus digital YBA adalah jembatan saya ke tanah kelahiran. Fitur audionya tak ternilai."</p><cite>— Teuku Ridwan, Profesional IT</cite></div></div>
+                        <div class="testimonial-card"><div class="testimonial-photo"><img src="https://i.pravatar.cc/150?img=56" alt="Foto Dr. Ibrahim"></div><div class="testimonial-text"><p>"Arsip Sejarah Lisan adalah harta karun bagi para peneliti. Mendengar langsung dari sumbernya adalah sebuah anugerah."</p><cite>— Dr. Ibrahim, Akademisi & Peneliti Budaya</cite></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta-section" class="reveal">
+            <div class="container">
+                <div id="cta">
+                    <h2>Jadilah Bagian dari Gerakan Ini.</h2>
+                    <p style="font-family: var(--font-sans); color: rgba(255,255,255,0.8); max-width: 600px; margin: 20px auto 40px; font-size: 1.1rem;">Setiap donasi Anda adalah bahan bakar untuk melestarikan identitas kita. Dukung kami dalam menjaga warisan Basa Aceh untuk generasi yang akan datang.</p>
+                    <a href="#" class="btn btn-primary" style="background-color: var(--white); color: var(--primary-color); padding: 16px 35px; font-size: 1rem;">Donasi Sekarang</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Yayasan Basa Aceh</h4>
+                    <p>Jl. Teuku Nyak Arief No. 1<br>Darussalam, Banda Aceh, Aceh 23111</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#products"><span>Platform</span></a></li>
+                        <li><a href="#news"><span>Blog</span></a></li>
+                        <li><a href="#"><span>Karir</span></a></li>
                     </ul>
                 </div>
-                <!-- / -->
-            </div><!-- Container -->
-        </nav> <!-- Navbar -->
-    </header>
-    <!-- End Header -->
-    <main>
-        <!-- section -->
-        <section id="home" class="home-banner">
-            <div class="social-share nav d-none d-lg-flex">
-                <a href="https://fb.com/basaaceh.org">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="https://twitter.com/basaacehorg">
-                    <i class="bi bi-twitter"></i>
-                </a>
-                <a href="https://instagram.com/basaaceh.org">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <!--<a href="#">
-                    <i class="bi bi-linkedin"></i>-->
-                </a>
-            </div>
-            <div class="placeholder">
-                <!--<h5>Z<br>e<br>m<br>o</h5>-->
-            </div>
-            <div class="container">
-                <div class="row min-vh-100 align-items-center">
-                    <div class="col-lg-6">
-                        <div class="typo-box">
-                            <h6>Saleuem teuka</h6>
-                            <h1 class="font-alt">Basaacehorg</h1>
-                            <h2>Freelance <span id="type-it"></span></h2>
-                            <p>The namics of how users interact with interactive elements within a user interface flow chart based on container proportion.</p>
-                            <div class="btn-bar">
-                                <a class="px-btn px-btn-white" href="#">Contact Me</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="home-avatar-box">
-                            <div class="home-avatar-in">
-                                <!--<img src="static\img\home-banner.png" title="" alt="">-->
-                                            <img src="ba.png" title="" alt=""> 
-                            </div>
-                        </div>
-                    </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#"><span>Kebijakan Privasi</span></a></li>
+                        <li><a href="#"><span>Syarat & Ketentuan</span></a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ikuti Kami</h4>
+                    <ul>
+                        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg> <span>Instagram</span></a></li>
+                        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> <span>YouTube</span></a></li>
+                        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg> <span>LinkedIn</span></a></li>
+                        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg> <span>Facebook</span></a></li>
+                        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L7 17l-5-5"></path><path d="M22 6l-11 11-5-5"></path></svg> <span>X (Twitter)</span></a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="bottom-ani dark-text-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1000 40" preserveaspectratio="none">
-                    <path fill="currentColor" d="">
-                        <animate attributename="d" begin="0s" dur="10s" repeatcount="indefinite" values="
-                      M0,0 C200,7.11236625e-15 200,40 400,40 C600,40 800,0 1000,0 L1000,50 L0,50 L0,0 Z;
-                      M0,40 C200,40 400,0 600,0 C800,0 800,40 1000,40 L1000,50 L0,50 L0,40 Z;
-                      M0,30 C200,30 200,0 400,0 C600,0 800,40 1000,40 L1000,50 L0,50 L0,30 Z;
-                      M0,0 C200,7.11236625e-15 200,40 400,40 C600,40 800,0 1000,0 L1000,50 L0,50 L0,0 Z;"></animate>
-                    </path>
-                </svg>
-            </div>
-        </section>
-        <!-- End section -->
-        <!-- About Us -->
-        <section id="about" class="section about-section dark-bg-1">
-            <div class="placeholder">
-                <h5>About</h5>
-            </div>
-            <div class="container">
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-lg-7 ps-xl-5">
-                        <div class="about-row about-text">
-                            <div class="sm-title">
-                                <h3>About Me</h3>
-                            </div>
-                            <h6>Hello, my name is <span>Zemo</span> and i am <span>UX/UI designer</span> and <span>front-end developer</span></h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                        </div>
-                        <div class="about-row tag-text">
-                            <div class="sm-title">
-                                <h3>Design Tools</h3>
-                            </div>
-                            <div class="nav">
-                                <span>Adobe Xd</span>
-                                <span> Illustrator</span>
-                                <span>Photoshop </span>
-                                <span>Figma </span>
-                                <span>Sketch</span>
-                            </div>
-                        </div>
-                        <div class="about-row tag-text">
-                            <div class="sm-title">
-                                <h3>Technologies and Skills</h3>
-                            </div>
-                            <div class="nav">
-                                <span>Html</span>
-                                <span>Css</span>
-                                <span>Scss</span>
-                                <span>Less</span>
-                                <span>jQuery</span>
-                                <span>php</span>
-                                <span>React</span>
-                                <span>Javascript</span>
-                                <span>Graphic Design</span>
-                                <span>Art Design</span>
-                                <span>Ui/Ux Design</span>
-                            </div>
-                        </div>
-                        <div class="about-row progress-text">
-                            <div class="sm-title">
-                                <h3>Work Process</h3>
-                            </div>
-                            <div class="row g-1">
-                                <div class="col-6 col-sm-3">
-                                    <div class="d-flex align-items-center">
-                                        <span>#01</span>
-                                        <label class="col ps-2">Research</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-3">
-                                    <div class="d-flex align-items-center">
-                                        <span>#02</span>
-                                        <label class="col ps-2">Design</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-3">
-                                    <div class="d-flex align-items-center">
-                                        <span>#03</span>
-                                        <label class="col ps-2">Codeing</label>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-sm-3">
-                                    <div class="d-flex align-items-center">
-                                        <span>#04</span>
-                                        <label class="col ps-2">Launch</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="about-left">
-                            <img src="static\img\about-me.png" title="" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Us -->
-        <!-- Services -->
-        <section id="services" class="section services-section">
-            <div class="placeholder">
-                <h5>Services</h5>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <div class="section-title">
-                            <h2><span>My Services</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- feaure box -->
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="feature-box-1">
-                            <div class="icon hexagon">
-                                <i class="bi bi-laptop"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h5>Unique design</h5>
-                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- feaure box -->
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="feature-box-1">
-                            <div class="icon hexagon">
-                                <i class="bi bi-layout-text-window"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h5>Different Layout</h5>
-                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- feaure box -->
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="feature-box-1">
-                            <div class="icon hexagon">
-                                <i class="bi bi-layers"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h5>Make it Simple</h5>
-                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- feaure box -->
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="feature-box-1">
-                            <div class="icon hexagon">
-                                <i class="bi bi-phone"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h5>Responsiveness</h5>
-                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- feaure box -->
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="feature-box-1">
-                            <div class="icon hexagon">
-                                <i class="bi bi-bug"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h5>Testing for Perfection</h5>
-                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- feaure box -->
-                    <div class="col-sm-6 col-lg-4 my-3">
-                        <div class="feature-box-1">
-                            <div class="icon hexagon">
-                                <i class="bi bi-command"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h5>Advanced Options</h5>
-                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                </div>
-            </div>
-        </section>
-        <!-- End Services -->
-        <!-- Resume -->
-        <section class="section section-resume dark-bg-1">
-            <div class="placeholder">
-                <h5>Experience</h5>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <div class="section-title">
-                            <h2><span>My Experience</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center pt-3">
-                    <div class="col-lg-10">
-                        <div class="resume-box">
-                            <ul>
-                                <li class="row g-0">
-                                    <div class="col-sm-4 col-xl-3">
-                                        <h6>Sep, 2016 – May, 2017</h6>
-                                    </div>
-                                    <div class="col-sm-8 col-xl-9 ps-xl-4">
-                                        <h5>Junior Designer</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span>- Las Vegas, USA</span>
-                                    </div>
-                                </li>
-                                <li class="row g-0">
-                                    <div class="col-sm-4 col-xl-3">
-                                        <h6>Sep, 2016 – May, 2017</h6>
-                                    </div>
-                                    <div class="col-sm-8 col-xl-9 ps-xl-4">
-                                        <h5>Systems Analyst / Web Developer</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span>- Las Vegas, USA</span>
-                                    </div>
-                                </li>
-                                <li class="row g-0">
-                                    <div class="col-sm-4 col-xl-3">
-                                        <h6>Sep, 2016 – May, 2017</h6>
-                                    </div>
-                                    <div class="col-sm-8 col-xl-9 ps-xl-4">
-                                        <h5>Full Stack Developer</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span>- Las Vegas, USA</span>
-                                    </div>
-                                </li>
-                                <li class="row g-0">
-                                    <div class="col-sm-4 col-xl-3">
-                                        <h6>Sep, 2016 – May, 2017</h6>
-                                    </div>
-                                    <div class="col-sm-8 col-xl-9 ps-xl-4">
-                                        <h5>Full Stack Developer</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span>- Las Vegas, USA</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Resume -->
-        <!-- Portfolio -->
-        <section id="work" class="section portfolio-section">
-            <div class="placeholder">
-                <h5>portfolio</h5>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center mb-3">
-                    <div class="col-lg-6 text-center">
-                        <div class="section-title">
-                            <h2><span>My Portfolio</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-3 lightbox-gallery">
-                    <div class="col-lg-6">
-                        <div class="portfolio-box row g-0">
-                            <div class="portfolio-img col-sm-6 col-lg-7">
-                                <a class="p-icon gallery-link" href="static\img\portfolio-02.jpg">
-                                    <i class="bi bi-plus"></i>
-                                </a>
-                                <img src="static\img\portfolio-02.jpg" title="" alt="">
-                            </div>
-                            <div class="portfolio-info col-sm-6 col-lg-5">
-                                <h2>Mombo Mockup</h2>
-                                <p>Lorem ipsum dolor sit amet.</p>
-                                <div class="nav"><span>Ui Design</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="portfolio-box row g-0">
-                            <div class="portfolio-img col-sm-6 col-lg-7">
-                                <a class="p-icon gallery-link" href="static\img\portfolio-03.jpg">
-                                    <i class="bi bi-plus"></i>
-                                </a>
-                                <img src="static\img\portfolio-03.jpg" title="" alt="">
-                            </div>
-                            <div class="portfolio-info col-sm-6 col-lg-5">
-                                <h2>Mombo Mockup</h2>
-                                <p>Lorem ipsum dolor sit amet.</p>
-                                <div class="nav"><span>Ui Design</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="portfolio-box row g-0 flex-row-lg-reverse">
-                            <div class="portfolio-img col-sm-6 col-lg-7">
-                                <a class="p-icon gallery-link" href="static\img\portfolio-01.jpg">
-                                    <i class="bi bi-plus"></i>
-                                </a>
-                                <img src="static\img\portfolio-01.jpg" title="" alt="">
-                            </div>
-                            <div class="portfolio-info col-sm-6 col-lg-5">
-                                <h2>Mombo Mockup</h2>
-                                <p>Lorem ipsum dolor sit amet.</p>
-                                <div class="nav"><span>Ui Design</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="portfolio-box row g-0 flex-row-lg-reverse">
-                            <div class="portfolio-img col-sm-6 col-lg-7">
-                                <a class="p-icon gallery-link" href="static\img\portfolio-04.jpg">
-                                    <i class="bi bi-plus"></i>
-                                </a>
-                                <img src="static\img\portfolio-04.jpg" title="" alt="">
-                            </div>
-                            <div class="portfolio-info col-sm-6 col-lg-5">
-                                <h2>Mombo Mockup</h2>
-                                <p>Lorem ipsum dolor sit amet.</p>
-                                <div class="nav"><span>Ui Design</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Portfolio -->
-        <!-- Testimonisla -->
-        <section class="section testimonials-section dark-bg-1">
-            <div class="placeholder">
-                <h5>testimonials</h5>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <div class="section-title">
-                            <h2><span>Testimonials</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-carousel pt-3" data-items="2" data-nav-dots="true" data-md-items="2" data-sm-items="1" data-xs-items="1" data-xx-items="1" data-space="30">
-                    <!-- testimonials -->
-                    <div class="testimonial-col">
-                        <div class="d-flex">
-                            <div class="img">
-                                <img src="static\img\team-1.jpg" title="" alt="">
-                            </div>
-                            <div class="col">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="tc-info">
-                                    <h6>Nancy Bayers</h6>
-                                    <span>Founder & CEO at Pxdraft</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- testimonials -->
-                    <div class="testimonial-col">
-                        <div class="d-flex">
-                            <div class="img">
-                                <img src="static\img\team-1.jpg" title="" alt="">
-                            </div>
-                            <div class="col">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="tc-info">
-                                    <h6>Nancy Bayers</h6>
-                                    <span>Founder & CEO at Pxdraft</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                    <!-- testimonials -->
-                    <div class="testimonial-col">
-                        <div class="d-flex">
-                            <div class="img">
-                                <img src="static\img\team-1.jpg" title="" alt="">
-                            </div>
-                            <div class="col">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <div class="tc-info">
-                                    <h6>Nancy Bayers</h6>
-                                    <span>Founder & CEO at Pxdraft</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- / -->
-                </div>
-            </div>
-        </section>
-        <!-- End Testimonisla -->
-        <!-- Blog -->
-        <section id="blog" class="section">
-            <div class="placeholder">
-                <h5>Blog</h5>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <div class="section-title">
-                            <h2><span>Latest Blog</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 my-3">
-                        <div class="blog-post">
-                            <div class="blog-img">
-                                <div class="data">
-                                    <span>14</span>
-                                    <small>JAN</small>
-                                </div>
-                                <a href="blog.html">
-                                    <img src="static\img\blog-1.jpg" title="" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info">
-                                <h6><a href="blog.html">Prevent 75% of visitors from google analytics</a></h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="btn-bar">
-                                    <a href="blog.html" class="px-btn-arrow">
-                                        <span>Read More</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="blog-post">
-                            <div class="blog-img">
-                                <div class="data">
-                                    <span>14</span>
-                                    <small>JAN</small>
-                                </div>
-                                <a href="blog.html">
-                                    <img src="static\img\blog-2.jpg" title="" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info">
-                                <h6><a href="blog.html">Prevent 75% of visitors from google analytics</a></h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="btn-bar">
-                                    <a href="blog.html" class="px-btn-arrow">
-                                        <span>Read More</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 my-3">
-                        <div class="blog-post">
-                            <div class="blog-img">
-                                <div class="data">
-                                    <span>14</span>
-                                    <small>JAN</small>
-                                </div>
-                                <a href="blog.html">
-                                    <img src="static\img\blog-3.jpg" title="" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info">
-                                <h6><a href="blog.html">Prevent 75% of visitors from google analytics</a></h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="btn-bar">
-                                    <a href="blog.html" class="px-btn-arrow">
-                                        <span>Read More</span>
-                                        <i class="arrow"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Blog -->
-        <!-- Contact -->
-        <section id="contactus" class="section dark-bg-1 contactus-section">
-            <div class="placeholder">
-                <h5>Contact</h5>
-            </div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <div class="section-title">
-                            <h2><span>Contact Me</span></h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-xl-3 my-3">
-                        <div class="contact-info">
-                            <div class="contact-name">
-                                <div class="sm-title">
-                                    <h3>Email</h3>
-                                </div>
-                                <p>info@basaaceh.org</p>
-                            </div>
-                            <div class="contact-name">
-                                <div class="sm-title">
-                                    <h3>Visit My Studio</h3>
-                                </div>
-                                <p>Warnwe Park Streetperrine, <br>FL 33157 New York City</p>
-                            </div>
-                            <div class="contact-name">
-                                <div class="sm-title">
-                                    <h3>Talipun</h3>
-                                </div>
-                                <p>+628000000000000</p>
-                            </div>
-                            <div class="social-share nav">
-                                <a href="https://facebook.com/basaacehorg">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="https://twitter.com/basaacehorg">
-                                    <i class="bi bi-twitter"></i>
-                                </a>
-                                <a href="https://instagram.com/basaacehorg">
-                                    <i class="bi bi-instagram"></i>
-                                </a>
-                                <!--<a href="#">
-                                    <i class="bi bi-linkedin"></i>-->
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 my-3">
-                        <div class="contact-form">
-                            <div class="sm-title">
-                                <h3>Get In Touch</h3>
-                            </div>
-                            <form id="contact-form" method="POST">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input name="Name" id="name" placeholder="Nan *" class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input name="Email" id="email" placeholder="Email *" class="form-control" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input name="Subject" id="subject" placeholder="Subjek *" class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea name="message" id="message" placeholder="Peusan Droeneuh *" rows="3" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="send">
-                                            <button class="px-btn px-btn-white" type="button" value="Send"><span>KIREM</span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Contact -->
-    </main>
-    <!-- Footer -->
-    <footer class="footer white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 my-2">
-                    <div class="nav justify-content-center justify-content-md-start">
-                        <a href="#">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="#">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 my-2 text-center text-md-end">
-                    <p>© 2021 copyright <a href="#">basa aceh</a> </p>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Yayasan Basa Aceh. Sebuah inisiatif untuk masa depan budaya Aceh.</p>
             </div>
         </div>
     </footer>
-    <!-- End Footer -->
-    <script src="static\js\jquery-3.5.1.min.js"></script>
-    <script src="static\plugin\appear\jquery.appear.js"></script>
-    <script src="static\plugin\bootstrap\js\bootstrap.min.js"></script>
-    <script src="static\js\custom.js"></script>
-    <!-- end -->
-</body>
-<!-- Body End -->
 
+    <script>
+        // --- SCRIPT TETAP SAMA ---
+        const cursor = document.querySelector('.custom-cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.setAttribute("style", "top: "+(e.pageY - window.scrollY)+"px; left: "+e.pageX+"px;")
+        });
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => { revealObserver.observe(el); });
+        document.querySelectorAll('.card').forEach(card => {
+            card.onmousemove = (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedTexts = document.querySelectorAll('#hero .animated-text');
+            animatedTexts.forEach(textElement => {
+                let text = textElement.textContent;
+                let splitText = text.split(/\s+/).filter(word => word.length > 0); 
+                if (textElement.tagName === 'H1') {
+                    splitText = textElement.innerHTML.split('<br>').map(line => line.trim().split(/\s+/).filter(word => word.length > 0));
+                    textElement.innerHTML = "";
+                    let delay = 0.2;
+                    splitText.forEach((line, lineIndex) => {
+                        line.forEach(word => {
+                             let span = document.createElement('span');
+                             span.innerHTML = word;
+                             span.style.animationDelay = `${delay}s`;
+                             textElement.appendChild(span);
+                             textElement.appendChild(document.createTextNode(' '));
+                             delay += 0.1;
+                        });
+                        if (lineIndex < splitText.length - 1) {
+                            textElement.appendChild(document.createElement('br'));
+                        }
+                    });
+                } else {
+                    textElement.innerHTML = "";
+                    splitText.forEach((word, i) => {
+                        let span = document.createElement('span');
+                        span.textContent = word;
+                        span.style.animationDelay = `${0.5 + i * 0.1}s`;
+                        textElement.appendChild(span);
+                        textElement.appendChild(document.createTextNode(' '));
+                    });
+                }
+            });
+            const heroBtn = document.querySelector('#hero .btn');
+            heroBtn.style.opacity = '0';
+            heroBtn.style.animation = 'fade-in-up 1s 1.2s ease forwards';
+        });
+    </script>
+</body>
 </html>
- -->
